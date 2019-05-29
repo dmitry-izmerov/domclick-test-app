@@ -1,4 +1,4 @@
-package ru.domclick.testtask.controller
+package ru.domclick.testtask.integration
 
 import org.junit.Test
 import org.junit.runner.RunWith

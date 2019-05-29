@@ -33,3 +33,7 @@ tasks.withType<KotlinCompile> {
 		jvmTarget = "1.8"
 	}
 }
+
+tasks.test {
+	exclude("**/integration/**")
+}

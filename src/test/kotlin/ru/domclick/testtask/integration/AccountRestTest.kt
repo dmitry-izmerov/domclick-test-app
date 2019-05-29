@@ -1,6 +1,5 @@
-package ru.domclick.testtask
+package ru.domclick.testtask.integration
 
-import org.junit.Ignore
 import org.junit.Test
 import org.springframework.boot.test.web.client.TestRestTemplate
 import java.util.stream.IntStream
@@ -8,13 +7,12 @@ import kotlin.streams.toList
 
 private const val BASE_URL = "http://localhost:8080"
 
-@Ignore
 class AccountRestTest {
 
     private val restTemplate = TestRestTemplate()
 
     @Test
-    private fun checkMultipleCallsOfTransferMoneyAtOnce() {
+    fun checkMultipleCallsOfTransferMoneyInParallel() {
         val threadsNum = 10
         val threads = IntStream.range(0, threadsNum).toList()
             .map {
@@ -29,7 +27,7 @@ class AccountRestTest {
     }
 
     @Test
-    fun checkMultipleCallsOfTransferMoneyInSequence() {
+    fun checkMultipleCallsOfTransferMoneyConsequentially() {
         val threadsNum = 10
         for (i in 1..threadsNum) {
             val t = Thread {
